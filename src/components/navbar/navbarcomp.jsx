@@ -1,10 +1,11 @@
 import React, { useState }  from 'react';
 import {  Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbarcomp = (props) => {
 	let [branches, setBranches] = useState([])
 	let [location, setLocation] = useState('')
-	// let [category, setCategory] = useState('')
+	let [category, setCategory] = useState('')
 	let [isBranch, setIsBranch] = useState(false)
 	const showBranches = (e, country) => {
 		setLocation(country.name)
@@ -13,8 +14,9 @@ const Navbarcomp = (props) => {
 	}
 
 	const showCategories = (e, branch) => {
-		e.preventDefault();
-		window.location.replace(`http://localhost:3000/${location}/${branch.branch_id}`)
+		setCategory(branch);
+		props.giveData(location, category)
+		
 	}
 
 	return (
@@ -40,8 +42,10 @@ const Navbarcomp = (props) => {
 							{
 							branches.map(br => {
 									return(
-										<NavDropdown.Item key={`${br.branch_id}`} onClick={e => showCategories(e, br)}>{br.name}
-										</NavDropdown.Item>
+										<div onClick={(e) =>showCategories(e, br) }>
+										<Link style={{"display": "block"}} key={br.branch_id} to={`/${location}/${br.branch_id}`}>{br.name}</Link>
+										</div>
+										
 									)
 								})
 							}	

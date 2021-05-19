@@ -1,13 +1,22 @@
 import { Route, Switch, /*BrowserRouter,  Redirect */ } from 'react-router-dom'
-import './App.css';
+  import './App.css';
 import Categorypage from './components/categorypage/categorypage';
 import Landingpage from './components/landingpage/landingpage';
 import Navbarcomp from './components/navbar/navbarcomp';
-import {catalogData} from './constants/catalog'
+import {catalogData} from './constants/catalog';
+import React from 'react';
+import { useState } from 'react';
 function App() {
+  let [location, setLocation] = useState('')
+	let [category, setCategory] = useState('')
+  const giveData = (location, category) => {
+    setLocation(location);
+    setCategory(category);
+    console.log(location, category);
+  }
   return (
     <div className="App">
-      <Navbarcomp catalogData={catalogData}/>
+      <Navbarcomp catalogData={catalogData} giveData={(location, country) => giveData(location, country)}/>
       <Route exact path='/'>
       
         <div className="main-container">
