@@ -8,14 +8,9 @@ const Categorypage = (props) => {
     useEffect(() => {
         let getData =  filterData(props.match.params);
         setMainData(getData)
-    }, [])
-    useEffect(() => {
-        let getData =  filterData(props.match.params);
-        setMainData(getData);
-    }, [props.match]);
+    }, [props.match.params])
 
     const showSubCategories = (e, cat)=> {
-        console.log(cat);
         let data =cat.subcategories
         setMainData(data);
     }
