@@ -9,8 +9,8 @@ const IndividualItem = (props) => {
         {
            props.mainData.map(el => {
             return (
-                <div className="item">
-                <Card style={{ width: '18rem' }} key={el.name}>
+                <div className="item"  key={el.name}>
+                <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={props.cat ? `/category/${el.image}` :  
             `/category/subcategory/${el.image}`}
             />

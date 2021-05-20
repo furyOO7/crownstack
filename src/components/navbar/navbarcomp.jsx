@@ -1,11 +1,10 @@
 import React, { useState }  from 'react';
 import {  Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbarcomp = (props) => {
 	let [branches, setBranches] = useState([])
 	let [location, setLocation] = useState('')
-	let [category, setCategory] = useState('')
 	let [isBranch, setIsBranch] = useState(false)
 	const showBranches = (e, country) => {
 		setLocation(country.name)
