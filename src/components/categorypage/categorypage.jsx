@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
+import { filterData } from '../../utility/utilityfunction';
+import IndividualItem from './individualItem';
+
 const Categorypage = (props) => {
-    console.log(window.location.pathname.split('/'));
+    let [mainData, setMainData] = useState([]);
+    
+    useEffect(() => {
+        let getData =  filterData(props.match.params);
+        setMainData(getData)
+    }, [])
+    useEffect(() => {
+        let getData =  filterData(props.match.params);
+        setMainData(getData);
+    }, [props.match]);
+
+    const showSubCategories = (e, cat)=> {
+        console.log(cat);
+        let data =cat.subcategories
+        setMainData(data);
+    }
+    const backClicked = (e, cat)=> {
+        let getData =  filterData(props.match.params);
+        setMainData(getData);
+    }
     return ( 
-        <div>CategoryPage</div>
+       mainData ?  <div>
+       <IndividualItem mainData={mainData.categories ? mainData.categories : mainData} 
+       cat={mainData.categories ? true : false}
+       catCliked={(e, cat) => showSubCategories(e, cat)} back={backClicked}/>
+   </div>: []
      );
 }
  

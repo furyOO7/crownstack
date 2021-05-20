@@ -5,18 +5,10 @@ import Landingpage from './components/landingpage/landingpage';
 import Navbarcomp from './components/navbar/navbarcomp';
 import {catalogData} from './constants/catalog';
 import React from 'react';
-import { useState } from 'react';
 function App() {
-  let [location, setLocation] = useState('')
-	let [category, setCategory] = useState('')
-  const giveData = (location, category) => {
-    setLocation(location);
-    setCategory(category);
-    console.log(location, category);
-  }
   return (
     <div className="App">
-      <Navbarcomp catalogData={catalogData} giveData={(location, country) => giveData(location, country)}/>
+      <Navbarcomp catalogData={catalogData}/>
       <Route exact path='/'>
       
         <div className="main-container">
@@ -24,12 +16,8 @@ function App() {
         </div>
       </Route>
       <Switch>
-        <Route exact path='/:location/:branch'>
-          <Categorypage />
-        </Route>
-        <Route exact path='/:location/:branch/:cat'>
-        <Categorypage />
-        </Route>
+        <Route exact path='/:location/:branch' component={Categorypage}></Route>
+        <Route exact path='/:location/:branch/:cat' component={Categorypage}></Route>
       </Switch>
     </div>
   );

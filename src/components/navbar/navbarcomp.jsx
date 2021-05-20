@@ -12,13 +12,9 @@ const Navbarcomp = (props) => {
 		setBranches(country.branches);
 		setIsBranch(true)
 	}
+	const reset = () => {
 
-	const showCategories = (e, branch) => {
-		setCategory(branch);
-		props.giveData(location, category)
-		
 	}
-
 	return (
 		<div className="nav-main">
 			<Navbar bg="light" expand="lg">
@@ -42,9 +38,8 @@ const Navbarcomp = (props) => {
 							{
 							branches.map(br => {
 									return(
-										<div onClick={(e) =>showCategories(e, br) }>
-										<Link style={{"display": "block"}} key={br.branch_id} to={`/${location}/${br.branch_id}`}>{br.name}</Link>
-										</div>
+										
+										<Link style={{"display": "block"}} key={br.branch_id} to={`/${location}/${br.branch_id}`} onClick={reset}>{br.name}</Link>
 										
 									)
 								})

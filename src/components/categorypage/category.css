@@ -1,0 +1,17 @@
+.maincat {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 20px;
+    
+}
+.item  {
+    flex: none;
+    padding: 20px;
+}
+.subcat {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
